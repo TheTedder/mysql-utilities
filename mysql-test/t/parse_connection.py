@@ -228,7 +228,7 @@ class test(mutlib.System_test):
         with_credentials   True if with credentials.
         """
         if self.debug:
-            print "\nTest case {0} - {1}".format(test_num + 1, test_data[0])
+            print("\nTest case {0} - {1}".format(test_num + 1, test_data[0]))
 
         try:
             if with_credentials:
@@ -258,10 +258,10 @@ class test(mutlib.System_test):
         for i in range(0, len(_TEST_RESULTS)):
             self.test_connection(i, _TEST_RESULTS[i])
             if self.debug:
-                print("Comparing result for test case {0}: {1} == {2}".format(
-                    i + 1, _TEST_RESULTS[i][2], self.results[i]))
+                print(("Comparing result for test case {0}: {1} == {2}".format(
+                    i + 1, _TEST_RESULTS[i][2], self.results[i])))
                 if _TEST_RESULTS[i][3]:
-                    print "Test case is expected to fail."
+                    print("Test case is expected to fail.")
 
         if os.name == "posix":
             _TEST_RESULTS_WITH_CREDENTIALS.extend(

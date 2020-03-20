@@ -123,11 +123,19 @@ class TopologyMap(object):
                 master = servers[0]
                 break
             except UtilError as e:
+<<<<<<< Updated upstream
                 print "FAILED.\n"
+=======
+                print("FAILED.\n")
+>>>>>>> Stashed changes
                 if i < self.num_retries and self.prompt_user:
-                    print "Connection to %s has failed.\n" % master_info + \
+                    print("Connection to %s has failed.\n" % master_info + \
                         "Please enter the following information " + \
+<<<<<<< Updated upstream
                         "to connect to this server."
+=======
+                        "to connect to this server.")
+>>>>>>> Stashed changes
                     conn['user'] = input("User name: ")
                     conn['passwd'] = getpass.getpass("Password: ")
                 else:
@@ -193,7 +201,7 @@ class TopologyMap(object):
         masters_found.append(master_info)
 
         if not self.quiet:
-            print "# Finding slaves for master: %s" % master_info
+            print("# Finding slaves for master: %s" % master_info)
 
         # See if the user wants us to discover slaves.
         discover = self.options.get("discover", None)
@@ -356,14 +364,14 @@ class TopologyMap(object):
                         # This should never happened... (done to avoid crash)
                         t_status = " [IO: ??, SQL: ??]"
 
-                print "{0}+--- {1}{2}".format(new_preamble, slave[0],
-                                              t_status),
+                print("{0}+--- {1}{2}".format(new_preamble, slave[0],
+                                              t_status), end=' ')
 
                 if (slave[0] in masters_found):
-                    print "<-->",
+                    print("<-->", end=' ')
                 else:
-                    print "-",
-                print role
+                    print("-", end=' ')
+                print(role)
 
                 if slave[1] != []:
                     if i < stop - 1:

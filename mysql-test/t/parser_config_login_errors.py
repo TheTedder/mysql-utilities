@@ -127,7 +127,7 @@ class test(mutlib.System_test):
                 conn = parse_connection(test_)
             except UtilError as err:
                 if self.debug:
-                    print(err.errmsg)
+                    print((err.errmsg))
                 self.results.append("{0}\n".format(err.errmsg))
             else:
                 if self.debug:
