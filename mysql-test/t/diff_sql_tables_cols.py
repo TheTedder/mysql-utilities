@@ -19,7 +19,7 @@
 diff_sql_tables_cols test.
 """
 
-import test_sql_template
+from . import test_sql_template
 
 
 # Note: removing auto_increment does not work correctly.

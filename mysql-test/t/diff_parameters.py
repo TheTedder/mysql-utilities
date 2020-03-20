@@ -19,7 +19,7 @@
 diff_parameters test.
 """
 
-import diff
+from . import diff
 
 from mysql.utilities.exception import MUTLibError
 

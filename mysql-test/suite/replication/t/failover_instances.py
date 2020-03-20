@@ -22,8 +22,8 @@ failover_instances test.
 import os
 import time
 
-import failover
-import rpl_admin_gtid
+from . import failover
+from . import rpl_admin_gtid
 
 from mysql.utilities.common.tools import delete_directory
 from mysql.utilities.exception import MUTLibError

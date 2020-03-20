@@ -36,16 +36,16 @@ from mysql.utilities.common.options_parser import MySQLOptionsParser
 
 log = logging.getLogger('ip_parser')
 
-_BAD_CONN_FORMAT = (u"Connection '{0}' cannot be parsed. Please review the "
-                    u"used connection string (accepted formats: "
-                    u"<user>[:<password>]@<host>[:<port>][:<socket>] or "
-                    u"<login-path>[:<port>][:<socket>])")
+_BAD_CONN_FORMAT = ("Connection '{0}' cannot be parsed. Please review the "
+                    "used connection string (accepted formats: "
+                    "<user>[:<password>]@<host>[:<port>][:<socket>] or "
+                    "<login-path>[:<port>][:<socket>])")
 
-_BAD_QUOTED_HOST = u"Connection '{0}' has a malformed quoted host"
+_BAD_QUOTED_HOST = "Connection '{0}' has a malformed quoted host"
 
-_MULTIPLE_CONNECTIONS = (u"It appears you are attempting to specify multiple "
-                         u"connections. This option does not permit multiple "
-                         u"connections")
+_MULTIPLE_CONNECTIONS = ("It appears you are attempting to specify multiple "
+                         "connections. This option does not permit multiple "
+                         "connections")
 
 _UNPARSED_CONN_FORMAT = ("Connection '{0}' not parsed completely. Parsed "
                          "elements '{1}', unparsed elements '{2}'")

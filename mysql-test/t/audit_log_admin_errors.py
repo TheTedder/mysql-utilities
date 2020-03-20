@@ -21,7 +21,7 @@ audit_log_admin_errors test.
 
 import os
 
-import audit_log_admin
+from . import audit_log_admin
 
 from mysql.utilities.exception import MUTLibError
 

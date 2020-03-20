@@ -19,7 +19,7 @@
 diff_sql_tables_parts test.
 """
 
-import test_sql_template
+from . import test_sql_template
 
 
 # TODO: Partitions are not supported at this time, so the following

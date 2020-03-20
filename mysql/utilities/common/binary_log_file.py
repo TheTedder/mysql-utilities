@@ -295,7 +295,7 @@ def move_binary_log(source, destination, filename, log_index,
                     break
             if found_pos is not None:
                 # Replace binary file entry with absolute destination path.
-                data[found_pos] = u'{0}\n'.format(
+                data[found_pos] = '{0}\n'.format(
                     os.path.join(destination, filename)
                 )
             else:

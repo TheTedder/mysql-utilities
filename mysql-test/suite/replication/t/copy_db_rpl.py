@@ -22,7 +22,7 @@ copy_db_rpl test.
 import os
 import time
 
-import replicate
+from . import replicate
 
 from mysql.utilities.exception import MUTLibError, UtilError
 from mysql.utilities.common.replication import Master, Slave

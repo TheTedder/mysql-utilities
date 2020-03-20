@@ -213,7 +213,7 @@ VIEW = 'view'
 USER = 'user'
 COLUMN = 'column'
 
-OBJECT_TYPES = _OBJMAP.keys()
+OBJECT_TYPES = list(_OBJMAP.keys())
 
 
 class ObjectGrep(object):

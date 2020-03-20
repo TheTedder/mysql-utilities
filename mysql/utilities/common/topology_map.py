@@ -122,13 +122,13 @@ class TopologyMap(object):
                 servers = connect_servers(conn, None, conn_options)
                 master = servers[0]
                 break
-            except UtilError, e:
+            except UtilError as e:
                 print "FAILED.\n"
                 if i < self.num_retries and self.prompt_user:
                     print "Connection to %s has failed.\n" % master_info + \
                         "Please enter the following information " + \
                         "to connect to this server."
-                    conn['user'] = raw_input("User name: ")
+                    conn['user'] = input("User name: ")
                     conn['passwd'] = getpass.getpass("Password: ")
                 else:
                     # retries expired - re-raise error if still failing

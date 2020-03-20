@@ -23,7 +23,7 @@ import os
 import stat
 
 import mutlib
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 from mysql.utilities.common.server import get_connection_dictionary

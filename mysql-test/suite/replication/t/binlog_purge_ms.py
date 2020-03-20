@@ -20,7 +20,7 @@ binlog_purge_rpl test for ms test and BUG#22543517 running binlogpurge
 on second master added to slave replication channels
 """
 
-import replicate_ms
+from . import replicate_ms
 
 from mysql.utilities.exception import MUTLibError
 

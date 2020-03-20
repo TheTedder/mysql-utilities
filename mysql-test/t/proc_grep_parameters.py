@@ -23,7 +23,7 @@ import os
 import subprocess
 import tempfile
 import time
-import proc_grep
+from . import proc_grep
 
 from mutlib.mutlib import kill_process
 from mysql.utilities.common.tools import get_tool_path

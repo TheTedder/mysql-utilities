@@ -19,7 +19,7 @@
 export_parameters_both test.
 """
 
-import export_parameters_def
+from . import export_parameters_def
 
 from mysql.utilities.exception import MUTLibError
 

@@ -19,7 +19,7 @@
 proc_grep_errors test.
 """
 
-import proc_grep
+from . import proc_grep
 
 from mysql.utilities.exception import MUTLibError
 

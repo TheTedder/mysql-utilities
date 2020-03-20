@@ -21,7 +21,7 @@ copy_db_parameters test.
 
 import os
 
-import copy_db
+from . import copy_db
 
 from mysql.utilities.exception import MUTLibError
 from mysql.utilities.exception import UtilError

@@ -18,7 +18,7 @@
 """
 grant_show_privileges test.
 """
-import show_grants
+from . import show_grants
 from mysql.utilities.exception import MUTLibError, UtilError
 
 

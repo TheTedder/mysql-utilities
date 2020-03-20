@@ -31,7 +31,7 @@ from mysql.utilities.common.options import obj2sql
 from mysql.utilities.common.server import set_ssl_opts_in_connection_info
 
 
-KILL_QUERY, KILL_CONNECTION, PRINT_PROCESS = range(3)
+KILL_QUERY, KILL_CONNECTION, PRINT_PROCESS = list(range(3))
 
 ID = "ID"
 USER = "USER"

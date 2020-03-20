@@ -19,7 +19,7 @@
 copy_db_rpl_errors test.
 """
 
-import export_rpl_errors
+from . import export_rpl_errors
 import mutlib
 
 from mysql.utilities.exception import MUTLibError

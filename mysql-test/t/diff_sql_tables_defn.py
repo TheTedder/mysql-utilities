@@ -19,7 +19,7 @@
 diff_sql_tables_defn test.
 """
 
-import test_sql_template
+from . import test_sql_template
 
 
 # (comment, def1, def2, expected result, error_codes)

@@ -53,7 +53,7 @@ def find_packages(*args, **kwrds):
                     pkg = base_path.replace(os.sep, '.')
                 pkgs[pkg] = root
 
-    result = pkgs.keys()
+    result = list(pkgs.keys())
     for excl in excludes:
         # We exclude packages that *begin* with an exclude pattern.
         result = [pkg for pkg in result if not fnmatch(pkg, excl + "*")]
@@ -178,7 +178,7 @@ INSTALL = {
 add_optional_resources('mysql', exclude=["tests"])
 
 if __name__ == "__main__":
-    for key, item in INSTALL.iteritems():
+    for key, item in INSTALL.items():
         print("--> {0}".format(key))
         print("      {0}".format(item))
         print

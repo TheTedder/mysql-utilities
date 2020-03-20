@@ -20,10 +20,10 @@ rpl_admin_basic_ssl_gtid test with different ssl certificates, using
 config-path.
 """
 
-import ConfigParser
+import configparser
 import os
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError, UtilError
 from mysql.utilities.common.server import Server
@@ -193,7 +193,7 @@ class test(rpl_admin.test):
                              self.server3, self.server4]
 
         # setup config_path
-        config_p = ConfigParser.ConfigParser()
+        config_p = configparser.ConfigParser()
         self.test_server_names = []
 
         with open(self.config_file_path, 'w') as config_f:

@@ -22,7 +22,7 @@ rpl_admin_failover_missing test.
 import tempfile
 
 import mutlib
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError, UtilRplError, UtilError
 from mysql.utilities.common.format import format_tabular_list

@@ -19,7 +19,7 @@
 meta_grep_errors test.
 """
 
-import meta_grep
+from . import meta_grep
 
 from mysql.utilities.exception import MUTLibError
 

@@ -21,7 +21,7 @@ Test the main features of the mysqlslavetrx utility.
 
 import os
 
-import rpl_sync
+from . import rpl_sync
 
 from mysql.utilities.common.gtid import gtid_set_union
 from mysql.utilities.exception import MUTLibError, UtilError

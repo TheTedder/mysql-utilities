@@ -22,7 +22,7 @@ gtid_no_password test.
 import os
 import time
 
-import failover
+from . import failover
 
 from mysql.utilities.exception import MUTLibError
 

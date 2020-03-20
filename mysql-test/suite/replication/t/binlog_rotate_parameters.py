@@ -19,8 +19,8 @@
 binlog_rotate parameters test.
 """
 
-import binlog_rotate
-from binlog_rotate import binlog_file_exists
+from . import binlog_rotate
+from .binlog_rotate import binlog_file_exists
 
 from mysql.utilities.exception import MUTLibError
 

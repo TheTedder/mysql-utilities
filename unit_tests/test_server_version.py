@@ -39,7 +39,7 @@ class TestServerVersion(unittest.TestCase):
     def test_valid(self):
         for version in version_list:
             result = parse_mysqld_version(version[0])
-            frmt = u"{0}: was {1}, expected {2}"
+            frmt = "{0}: was {1}, expected {2}"
             msg = frmt.format(version[0], result, version[1])
             self.assertEqual(version[1], result, msg)
 

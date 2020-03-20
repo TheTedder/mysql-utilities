@@ -21,8 +21,8 @@ rpl_admin_scripts test.
 
 import os
 
-import rpl_admin
-import rpl_admin_gtid
+from . import rpl_admin
+from . import rpl_admin_gtid
 
 from mysql.utilities.exception import MUTLibError
 

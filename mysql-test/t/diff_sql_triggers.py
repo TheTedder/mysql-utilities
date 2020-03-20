@@ -19,7 +19,7 @@
 diff_sql_triggers test.
 """
 
-import test_sql_template
+from . import test_sql_template
 
 
 _TRIG_TABLE = "CREATE TABLE `diff_trig`.`t1` (a int)"

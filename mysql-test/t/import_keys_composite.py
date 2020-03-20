@@ -23,7 +23,7 @@ output formats.
 import os
 import sys
 
-import import_basic
+from . import import_basic
 
 from mysql.utilities.exception import MUTLibError
 from mysql.utilities.exception import UtilError

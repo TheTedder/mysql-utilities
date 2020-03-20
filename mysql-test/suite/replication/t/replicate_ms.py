@@ -23,7 +23,7 @@ import os
 import shlex
 import subprocess
 import time
-import rpl_admin
+from . import rpl_admin
 
 from mutlib.mutlib import stop_process
 from mysql.utilities import VERSION_STRING
@@ -49,7 +49,7 @@ class test(rpl_admin.test):
     This test exercises the mysqlrplms utility.
     """
 
-    log_range = range(1, 2)
+    log_range = list(range(1, 2))
     total_masters = 2
     server0 = None
     server1 = None

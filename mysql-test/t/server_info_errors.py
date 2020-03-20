@@ -19,7 +19,7 @@
 server_info_errors test.
 """
 
-import server_info
+from . import server_info
 
 from mysql.utilities.exception import MUTLibError
 

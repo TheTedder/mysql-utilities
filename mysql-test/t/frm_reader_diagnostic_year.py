@@ -21,7 +21,7 @@ frm_reader_diagnostic test for YEAR data type changes from 5.7.4 to 5.7.5.
 
 import os
 
-import frm_reader_base
+from . import frm_reader_base
 
 from mysql.utilities.exception import MUTLibError
 

@@ -30,41 +30,41 @@ _IGNORE_COLUMN = -1  # Ignore column in comparisons and transformations
 _FORCE_COLUMN = -2   # Force column to be included in build phase
 
 # Define column control symbols
-_DROP_COL, _ADD_COL, _CHANGE_COL_TYPE, _CHANGE_COL_ORDER = range(0, 4)
+_DROP_COL, _ADD_COL, _CHANGE_COL_TYPE, _CHANGE_COL_ORDER = list(range(0, 4))
 
 # List of database objects for enumeration
 _DATABASE, _TABLE, _VIEW, _TRIG, _PROC, _FUNC, _EVENT, _GRANT = "DATABASE", \
     "TABLE", "VIEW", "TRIGGER", "PROCEDURE", "FUNCTION", "EVENT", "GRANT"
 
 # Define database INFORMATION_SCHEMA column numbers
-_DB_NAME, _DB_CHARSET, _DB_COLLATION, _DB_SQL_PATH = range(0, 4)
+_DB_NAME, _DB_CHARSET, _DB_COLLATION, _DB_SQL_PATH = list(range(0, 4))
 
 # Define table INFORMATION_SCHEMA column numbers and index values
 _COLUMN_ORDINAL_POSITION, _COLUMN_NAME, _COLUMN_TYPE, _COLUMN_IS_NULLABLE, \
-    _COLUMN_DEFAULT, _COLUMN_EXTRA, _COLUMN_COMMENT, _COLUMN_KEY = range(0, 8)
+    _COLUMN_DEFAULT, _COLUMN_EXTRA, _COLUMN_COMMENT, _COLUMN_KEY = list(range(0, 8))
 
-_TABLE_DEF, _COLUMN_DEF, _PART_DEF = range(0, 3)
+_TABLE_DEF, _COLUMN_DEF, _PART_DEF = list(range(0, 3))
 _TABLE_DB, _TABLE_NAME, _TABLE_ENGINE, _TABLE_AUTO_INCREMENT, \
     _TABLE_AVG_ROW_LENGTH, _TABLE_CHECKSUM, _TABLE_COLLATION, _TABLE_COMMENT, \
-    _TABLE_ROW_FORMAT, _TABLE_CREATE_OPTIONS = range(0, 10)
+    _TABLE_ROW_FORMAT, _TABLE_CREATE_OPTIONS = list(range(0, 10))
 
 # Define view INFORMATION_SCHEMA column numbers
 _VIEW_DB, _VIEW_NAME, _VIEW_BODY, _VIEW_CHECK, _VIEW_DEFINER, \
-    _VIEW_SECURITY = range(0, 6)
+    _VIEW_SECURITY = list(range(0, 6))
 
 # Define trigger INFORMATION_SCHEMA column numbers
 _TRIGGER_DB, _TRIGGER_NAME, _TRIGGER_EVENT, _TRIGGER_TABLE, _TRIGGER_BODY, \
-    _TRIGGER_TIME, _TRIGGER_DEFINER = range(0, 7)
+    _TRIGGER_TIME, _TRIGGER_DEFINER = list(range(0, 7))
 
 # Define routine INFORMATION_SCHEMA column numbers
 _ROUTINE_DB, _ROUTINE_NAME, _ROUTINE_BODY, _ROUTINE_SQL_DATA_ACCESS, \
     _ROUTINE_SECURITY_TYPE, _ROUTINE_COMMENT, _ROUTINE_DEFINER, \
-    _ROUTINE_PARAMS, _ROUTINE_RETURNS, _ROUTINE_IS_DETERMINISTIC = range(0, 10)
+    _ROUTINE_PARAMS, _ROUTINE_RETURNS, _ROUTINE_IS_DETERMINISTIC = list(range(0, 10))
 
 # Define event INFORMATION_SCHEMA column numbers
 _EVENT_DB, _EVENT_NAME, _EVENT_DEFINER, _EVENT_BODY, _EVENT_TYPE, \
     _EVENT_INTERVAL_FIELD, _EVENT_INTERVAL_VALUE, _EVENT_STATUS, \
-    _EVENT_ON_COMPLETION, _EVENT_STARTS, _EVENT_ENDS = range(0, 11)
+    _EVENT_ON_COMPLETION, _EVENT_STARTS, _EVENT_ENDS = list(range(0, 11))
 
 # Get the constraints but ignore primary keys
 _CONSTRAINT_QUERY = """
@@ -167,7 +167,7 @@ def convert_special_characters(str_val):
     respective escape sequence.
     """
     # Check if the input value is a string before performing replacement.
-    if str_val and isinstance(str_val, basestring):
+    if str_val and isinstance(str_val, str):
         # First replace backslash '\' character, to avoid replacing '\' in
         # further escape sequences. backslash_re matches '|' not followed by %
         # as \% and \_ do not need to be replaced, and when '|' appear at the

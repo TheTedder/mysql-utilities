@@ -19,7 +19,7 @@
 copy_user_errors test.
 """
 
-import copy_user
+from . import copy_user
 
 from mysql.utilities.exception import MUTLibError
 

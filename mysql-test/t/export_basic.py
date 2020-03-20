@@ -21,7 +21,7 @@ export_basic test.
 
 import os
 
-import copy_db_parameters
+from . import copy_db_parameters
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

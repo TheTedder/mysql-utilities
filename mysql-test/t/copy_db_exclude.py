@@ -21,7 +21,7 @@ copy_db_exclude test.
 
 import os
 
-import copy_db
+from . import copy_db
 
 from mysql.utilities.exception import MUTLibError
 

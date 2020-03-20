@@ -63,14 +63,14 @@ class TestUserPrivileges(unittest.TestCase):
         # Users are equivalent, so it should be true both ways
         self.assertTrue(self.user2.contains_user_privileges(self.user1))
         self.assertTrue(self.user1.contains_user_privileges(self.user2))
-        self.assertEquals(set(), self.user2.missing_user_privileges(
+        self.assertEqual(set(), self.user2.missing_user_privileges(
             self.user1))
-        self.assertEquals(set(), self.user1.missing_user_privileges(
+        self.assertEqual(set(), self.user1.missing_user_privileges(
             self.user2))
 
         # A user should contain the same privileges as itself
         self.assertTrue(self.user2.contains_user_privileges(self.user2))
-        self.assertEquals(set(), self.user2.missing_user_privileges(
+        self.assertEqual(set(), self.user2.missing_user_privileges(
             self.user2))
 
         # If we are cloning parameter is true,  it needs to have an extra
@@ -83,7 +83,7 @@ class TestUserPrivileges(unittest.TestCase):
         self.user1_dict = self._get_privs_dict(
             "GRANT SELECT, UPDATE ON `mysql`.* TO 'user1'@'%'")
 
-        self.assertEquals(set([("GRANT OPTION", '`mysql`', '*')]),
+        self.assertEqual(set([("GRANT OPTION", '`mysql`', '*')]),
                           self.user2.missing_user_privileges(
                               self.user1, plus_grant_option=True))
 
@@ -129,9 +129,9 @@ class TestUserPrivileges(unittest.TestCase):
         # User2 has privileges for entire mysql database, unlike user1.
         self.assertTrue(self.user2.contains_user_privileges(self.user1))
         self.assertFalse(self.user1.contains_user_privileges(self.user2))
-        self.assertEquals(set(), self.user2.missing_user_privileges(
+        self.assertEqual(set(), self.user2.missing_user_privileges(
             self.user1))
-        self.assertEquals(set([('SELECT', '`mysql`', '*'),
+        self.assertEqual(set([('SELECT', '`mysql`', '*'),
                                ('UPDATE', '`mysql`', '*')]),
                           self.user1.missing_user_privileges(self.user2))
 
@@ -163,9 +163,9 @@ class TestUserPrivileges(unittest.TestCase):
             "GRANT SELECT, UPDATE ON `mysql`.* TO 'user2'@'%'")
         self.assertTrue(self.user2.contains_user_privileges(self.user1))
         self.assertFalse(self.user1.contains_user_privileges(self.user2))
-        self.assertEquals(set(), self.user2.missing_user_privileges(
+        self.assertEqual(set(), self.user2.missing_user_privileges(
             self.user1))
-        self.assertEquals(set([('SELECT', '`mysql`', '*'),
+        self.assertEqual(set([('SELECT', '`mysql`', '*'),
                                ('UPDATE', '`mysql`', '*')]),
                           self.user1.missing_user_privileges(self.user2))
 
@@ -194,9 +194,9 @@ class TestUserPrivileges(unittest.TestCase):
             "GRANT ALL PRIVILEGES ON `mysql`.`users` TO 'user2'@'%'")
         self.assertFalse(self.user2.contains_user_privileges(self.user1))
         self.assertFalse(self.user1.contains_user_privileges(self.user2))
-        self.assertEquals(set([('GRANT OPTION', '`mysql`', '`users`')]),
+        self.assertEqual(set([('GRANT OPTION', '`mysql`', '`users`')]),
                           self.user2.missing_user_privileges(self.user1))
-        self.assertEquals(set([('ALL PRIVILEGES', '`mysql`', '`users`')]),
+        self.assertEqual(set([('ALL PRIVILEGES', '`mysql`', '`users`')]),
                           self.user1.missing_user_privileges(self.user2))
 
         self.user1_dict = self._get_privs_dict(
@@ -212,9 +212,9 @@ class TestUserPrivileges(unittest.TestCase):
             "GRANT SELECT, UPDATE, DELETE ON *.* TO 'user2'@'%'")
         self.assertTrue(self.user2.contains_user_privileges(self.user1))
         self.assertFalse(self.user1.contains_user_privileges(self.user2))
-        self.assertEquals(set(), self.user2.missing_user_privileges(
+        self.assertEqual(set(), self.user2.missing_user_privileges(
             self.user1))
-        self.assertEquals(set([("UPDATE", '*', '*'), ("SELECT", '*', '*'),
+        self.assertEqual(set([("UPDATE", '*', '*'), ("SELECT", '*', '*'),
                                ("DELETE", '*', '*')]),
                           self.user1.missing_user_privileges(self.user2))
 
@@ -225,20 +225,20 @@ class TestUserPrivileges(unittest.TestCase):
 
         self.assertTrue(self.user2.contains_user_privileges(self.user1))
         self.assertFalse(self.user1.contains_user_privileges(self.user2))
-        self.assertEquals(set(), self.user2.missing_user_privileges(
+        self.assertEqual(set(), self.user2.missing_user_privileges(
             self.user1))
-        self.assertEquals(set([("GRANT OPTION", '*', '*')]),
+        self.assertEqual(set([("GRANT OPTION", '*', '*')]),
                           self.user1.missing_user_privileges(self.user2))
 
     def test_parse_grant_statement(self):
         # Test function
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT ALTER ROUTINE, EXECUTE ON FUNCTION `util_test`.`f1` TO "
             "'priv_test_user2'@'%' WITH GRANT OPTION"),
             (set(['GRANT OPTION', 'EXECUTE', 'ALTER ROUTINE']), None,
                 '`util_test`', '`f1`', "'priv_test_user2'@'%'"))
         # Test procedure
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT ALTER ROUTINE ON PROCEDURE `util_test`.`p1` TO "
             "'priv_test_user2'@'%' IDENTIFIED BY "
             "PASSWORD '*123DD712CFDED6313E0DDD2A6E0D62F12E580A6F' "
@@ -246,34 +246,34 @@ class TestUserPrivileges(unittest.TestCase):
             (set(['GRANT OPTION', 'ALTER ROUTINE']), None,
                 '`util_test`', '`p1`', "'priv_test_user2'@'%'"))
         # Test with quoted objects
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT CREATE VIEW ON `db``:db`.```t``.``export_2` TO "
             "'priv_test_user'@'%'"),
             (set(['CREATE VIEW']), None, '`db``:db`.```t``', '``export_2`',
                 "'priv_test_user'@'%'"))
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT CREATE VIEW ON `db``:db`.```t``.* TO "
             "'priv_test_user'@'%'"),
             (set(['CREATE VIEW']), None, '`db``:db`.```t``', '*',
                 "'priv_test_user'@'%'"))
         # Test multiple grants with password and grant option
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT UPDATE, SELECT ON `mysql`.* TO 'user2'@'%' IDENTIFIED BY "
             "PASSWORD '*123DD712CFDED6313E0DDD2A6E0D62F12E580A6F' "
             "REQUIRE SSL WITH GRANT OPTION"),
             (set(['GRANT OPTION', 'UPDATE', 'SELECT']), None, '`mysql`',
                 '*', "'user2'@'%'"))
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT UPDATE, SELECT ON `mysql`.* TO 'user2'@'%' IDENTIFIED BY "
             "PASSWORD REQUIRE SSL WITH GRANT OPTION"),
             (set(['GRANT OPTION', 'UPDATE', 'SELECT']), None, '`mysql`',
                 '*', "'user2'@'%'"))
         # Test proxy privileges
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT PROXY ON ''@'' TO 'root'@'localhost' WITH GRANT OPTION"),
             (set(['GRANT OPTION', 'PROXY']), "''@''", None, None,
                 "'root'@'localhost'"))
-        self.assertEquals(user.User._parse_grant_statement(
+        self.assertEqual(user.User._parse_grant_statement(
             "GRANT PROXY ON 'root'@'%' TO 'root'@'localhost' WITH GRANT "
             "OPTION"),
             (set(['GRANT OPTION', 'PROXY']), "'root'@'%'", None, None,

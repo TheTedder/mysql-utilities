@@ -21,7 +21,7 @@ export_rpl_parameters test.
 
 import os
 
-import replicate
+from . import replicate
 import mutlib
 
 from mysql.utilities.exception import MUTLibError

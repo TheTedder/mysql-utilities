@@ -19,7 +19,7 @@
 replicate_log_file test.
 """
 
-import replicate
+from . import replicate
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

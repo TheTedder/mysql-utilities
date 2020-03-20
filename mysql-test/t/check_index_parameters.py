@@ -19,7 +19,7 @@
 check_index_parameters test.
 """
 
-import check_index
+from . import check_index
 
 from mysql.utilities.exception import MUTLibError
 

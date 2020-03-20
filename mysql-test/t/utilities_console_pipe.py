@@ -21,7 +21,7 @@ utilities_console_pipe test.
 
 import os
 
-import utilities_console_base
+from . import utilities_console_base
 
 from mysql.utilities.exception import MUTLibError
 

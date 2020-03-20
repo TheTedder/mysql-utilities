@@ -21,7 +21,7 @@ copy_db test. Servers with sql_mode=ANSI_QUOTES
 
 import os
 
-import copy_db
+from . import copy_db
 
 from mysql.utilities.common.sql_transform import quote_with_backticks
 from mysql.utilities.exception import MUTLibError

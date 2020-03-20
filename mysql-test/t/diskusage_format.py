@@ -19,7 +19,7 @@
 diskusage_format test.
 """
 
-import diskusage_basic
+from . import diskusage_basic
 
 from mysql.utilities.exception import MUTLibError
 

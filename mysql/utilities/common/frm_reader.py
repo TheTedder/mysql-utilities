@@ -247,14 +247,14 @@ _HA_SPATIAL = 1024             # For spatial search
 
 # Row type definitions
 _ROW_TYPE_DEFAULT, _ROW_TYPE_FIXED, _ROW_TYPE_DYNAMIC, _ROW_TYPE_COMPRESSED, \
-    _ROW_TYPE_REDUNDANT, _ROW_TYPE_COMPACT, _ROW_TYPE_PAGE = range(0, 7)
+    _ROW_TYPE_REDUNDANT, _ROW_TYPE_COMPACT, _ROW_TYPE_PAGE = list(range(0, 7))
 
 # enum utypes from field.h
 _NONE, _DATE, _SHIELD, _NOEMPTY, _CASEUP, _PNR, _BGNR, _PGNR, _YES, _NO, \
     _REL, _CHECK, _EMPTY, _UNKNOWN_FIELD, _CASEDN, _NEXT_NUMBER, \
     _INTERVAL_FIELD, _BIT_FIELD, _TIMESTAMP_OLD_FIELD, _CAPITALIZE, \
     _BLOB_FIELD, _TIMESTAMP_DN_FIELD, _TIMESTAMP_UN_FIELD, \
-    _TIMESTAMP_DNUN_FIELD = range(0, 24)
+    _TIMESTAMP_DNUN_FIELD = list(range(0, 24))
 
 # Array of field data types that can be unsigned
 _UNSIGNED_FIELDS = ['TINYINT', 'SMALLINT', 'MEDIUMINT', 'INT', 'INTEGER',
@@ -527,7 +527,7 @@ class FrmReader(object):
                 print "# Skipping to header at : %0000x" % 2
             self.frm_file.seek(2, 0)
             data = self.frm_file.read(_HEADER_LEN)
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot read header.")
@@ -577,7 +577,7 @@ class FrmReader(object):
             if self.verbosity > 1:
                 print "# Skipping to key data at : %0000x" % int(offset)
             self.frm_file.seek(offset, 0)
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot locate keys.")
@@ -667,7 +667,7 @@ class FrmReader(object):
                 print "# Skipping to table comments at : %0000x" % int(offset)
             self.frm_file.seek(offset, 0)
             data = self.frm_file.read(1)
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot read table comment.")
@@ -689,7 +689,7 @@ class FrmReader(object):
                 print "# Skipping to default data at : %0000x" % \
                     int(offset + 1)
             self.frm_file.seek(offset + 1, 0)
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot find default data.")
@@ -713,7 +713,7 @@ class FrmReader(object):
             if self.verbosity > 1:
                 print "# Skipping to keys at : %0000x" % int(offset + 2)
             self.frm_file.seek(offset + 2, 0)
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot find engine data.")
@@ -915,7 +915,7 @@ class FrmReader(object):
                     'default': None,
                 }
                 column_data.append(col_def)
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot locate column data")
@@ -940,7 +940,7 @@ class FrmReader(object):
                 print "# Skipping to column data at : %0000x" % int(offset)
             self.frm_file.seek(offset, 0)
             data = struct.unpack("<HHHHHHHHHHHHH", self.frm_file.read(26))
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot read column header.")
@@ -969,7 +969,7 @@ class FrmReader(object):
             col_names = self._read_column_names(fields_per_screen)[1]
             self.frm_file.read(1)  # skip 1 byte
             self.column_data = self._read_column_metadata()
-        except Exception, error:
+        except Exception as error:
             if self.verbosity > 1:
                 print "EXCEPTION:", error
             raise UtilError("Cannot read column data.")
@@ -1256,7 +1256,7 @@ class FrmReader(object):
         Returns list of strings - key column definitions
         """
         keys = []
-        key_info = zip(self.key_data['key_names'], self.key_data['keys'])
+        key_info = list(zip(self.key_data['key_names'], self.key_data['keys']))
         num_keys = len(key_info)
         i = 0
         for key, info in key_info:
@@ -1395,7 +1395,7 @@ class FrmReader(object):
         # Fail if we cannot read the file
         try:
             self.frm_file = open(self.frm_path, "rb")
-        except Exception, error:
+        except Exception as error:
             raise UtilError("The file %s cannot be read.\n%s" %
                             (self.frm_path, error))
 
@@ -1426,14 +1426,14 @@ class FrmReader(object):
             'Creation Time': time.ctime(file_stats[stat.ST_CTIME]),
             'Mode': file_stats[stat.ST_MODE],
         }
-        for value, data in file_info.iteritems():
+        for value, data in file_info.items():
             print "#%22s : %s" % (value, data)
         print
 
         # Fail if we cannot read the file
         try:
             self.frm_file = open(self.frm_path, "rb")
-        except Exception, error:
+        except Exception as error:
             raise UtilError("The file %s cannot be read.\n%s" %
                             (self.frm_path, error))
 
@@ -1467,7 +1467,7 @@ class FrmReader(object):
             'frm File_Version': self.general_data['frm_file_ver'],
             'Def Partition Engine': def_part_eng,
         }
-        for value, data in table_info.iteritems():
+        for value, data in table_info.items():
             print "#%22s : %s" % (value, data)
         print
 
@@ -1485,7 +1485,7 @@ class FrmReader(object):
         # Fail if we cannot read the file
         try:
             self.frm_file = open(self.frm_path, "rb")
-        except Exception, error:
+        except Exception as error:
             raise UtilError("The file %s cannot be read.\n%s" %
                             (self.frm_path, error))
 
@@ -1580,7 +1580,7 @@ class FrmReader(object):
         # Fail if we cannot read the file
         try:
             self.frm_file = open(self.frm_path, "r+b")
-        except Exception, error:
+        except Exception as error:
             raise UtilError("The file %s cannot be read.\n%s" %
                             (self.frm_path, error))
 

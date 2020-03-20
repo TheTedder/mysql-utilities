@@ -30,9 +30,9 @@ import os
 import textwrap
 
 try:
-    import cStringIO as StringIO
+    import io as StringIO
 except ImportError:
-    import StringIO
+    import io
 
 from mysql.utilities.common.sql_transform import to_sql
 
@@ -54,7 +54,7 @@ class UnicodeWriter(object):
         encoding[in]     encoding
         """
         # Redirect output to a queue
-        self.queue = StringIO.StringIO()
+        self.queue = io.StringIO()
         self.writer = csv.writer(self.queue, dialect=dialect, **kwds)
         self.stream = f_out
         self.encoder = codecs.getincrementalencoder(encoding)()
@@ -64,7 +64,7 @@ class UnicodeWriter(object):
 
         row[in]     sequence of strings or numbers
         """
-        self.writer.writerow([val.encode("utf-8") if isinstance(val, unicode)
+        self.writer.writerow([val.encode("utf-8") if isinstance(val, str)
                               else val for val in row])
         data = self.queue.getvalue()
         data = data.decode("utf-8")  # pylint: disable=R0204
@@ -113,10 +113,10 @@ def _format_row_separator(f_out, columns, col_widths, row, quiet=False):
     for i, _ in enumerate(columns):
         if not quiet:
             f_out.write("| ")
-        val = row[i].encode("utf-8") if isinstance(row[i], unicode) \
+        val = row[i].encode("utf-8") if isinstance(row[i], str) \
             else row[i]
         if isinstance(val, str):
-            val = u"{0:<{1}}".format(val.decode("utf-8"), col_widths[i] + 1)
+            val = "{0:<{1}}".format(val.decode("utf-8"), col_widths[i] + 1)
             f_out.write(val.encode("utf-8"))
         else:
             f_out.write("{0:<{1}} ".format("%s" % val, col_widths[i]))
@@ -140,7 +140,7 @@ def get_col_widths(columns, rows):
 
     stop = len(columns)
     for row in rows:
-        row = [val.encode("utf-8") if isinstance(val, unicode)
+        row = [val.encode("utf-8") if isinstance(val, str)
                else val for val in row]
         # if there is one column, just use row.
         if stop == 1:
@@ -197,7 +197,7 @@ def format_tabular_list(f_out, columns, rows, options=None):
         if print_header:
             csv_writer.writerow(columns)
         for row in rows:
-            row = [val.encode("utf-8") if isinstance(val, unicode)
+            row = [val.encode("utf-8") if isinstance(val, str)
                    else val for val in row]
             if convert_to_sql:
                 # Convert value to SQL (i.e. add quotes if needed).
@@ -273,7 +273,7 @@ def format_vertical_list(f_out, columns, rows, options=None):
                 if isinstance(columns[i], str) else columns[i]
             val = row[i].decode("utf-8") \
                 if isinstance(row[i], str) else row[i]
-            out = u"{0:>{1}}: {2}\n".format(col, max_colwidth, val)
+            out = "{0:>{1}}: {2}\n".format(col, max_colwidth, val)
             f_out.write(out.encode("utf-8"))
 
     if row_num > 0:
@@ -398,7 +398,7 @@ def convert_dictionary_list(dict_list):
     rows = []
     # First, get a list of the columns
     for node in dict_list:
-        for key in node.keys():
+        for key in list(node.keys()):
             if key not in cols:
                 cols.append(key)
 

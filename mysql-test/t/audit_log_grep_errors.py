@@ -21,7 +21,7 @@ audit_log_grep_errors test.
 
 import os
 
-import audit_log_grep
+from . import audit_log_grep
 
 from mysql.utilities.exception import MUTLibError
 

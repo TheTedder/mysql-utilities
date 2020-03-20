@@ -21,7 +21,7 @@ compare_db_errors test.
 
 import os
 
-import compare_db
+from . import compare_db
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

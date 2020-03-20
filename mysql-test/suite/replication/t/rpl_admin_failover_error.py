@@ -21,7 +21,7 @@ rpl_admin_failover_error test.
 
 import os
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 from mysql.utilities.exception import UtilError

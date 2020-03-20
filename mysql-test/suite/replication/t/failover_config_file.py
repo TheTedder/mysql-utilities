@@ -22,7 +22,7 @@ failover test.
 import os
 import time
 
-import failover
+from . import failover
 
 from mysql.utilities.common.messages import (MSG_UTILITIES_VERSION)
 from mysql.utilities.common.tools import check_python_version

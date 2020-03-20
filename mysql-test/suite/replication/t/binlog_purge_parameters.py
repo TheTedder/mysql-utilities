@@ -19,8 +19,8 @@
 binlog_purge_parameters test.
 """
 
-import binlog_purge
-from binlog_rotate import binlog_range_files_exists
+from . import binlog_purge
+from .binlog_rotate import binlog_range_files_exists
 
 from mysql.utilities.exception import MUTLibError
 

@@ -19,7 +19,7 @@
 copy_db_skips_objects test.
 """
 
-import copy_db
+from . import copy_db
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

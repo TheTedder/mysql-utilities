@@ -22,7 +22,7 @@ export_rpl test.
 import os
 
 import mutlib
-import replicate
+from . import replicate
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

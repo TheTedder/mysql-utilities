@@ -106,7 +106,7 @@ def check_replication(master_vals, slave_vals, options):
         try:
             print "\n#\n# Slave status: \n#"
             rpl.slave.show_status()
-        except UtilRplError, e:
+        except UtilRplError as e:
             print "ERROR:", e.errmsg
 
     if not quiet:
@@ -169,7 +169,7 @@ class _BaseTestReplication(object):
         if state == "pass":  # Only execute epilog if test passes.
             try:
                 self.report_epilog()
-            except UtilRplError, e:
+            except UtilRplError as e:
                 print "ERROR:", e.errmsg
                 res = True
 
@@ -214,7 +214,7 @@ class _BaseTestReplication(object):
         try:
             res = self.rpl_test()
         # Any errors raised is a failed test.
-        except UtilRplError, e:
+        except UtilRplError as e:
             if not self.quiet:
                 self.report_status("FAIL", [e.errmsg])
             else:
@@ -222,7 +222,7 @@ class _BaseTestReplication(object):
                                                       e.errmsg)
             return False
         # Check for warnings
-        except UtilRplWarn, e:
+        except UtilRplWarn as e:
             if not self.quiet:
                 self.report_status("WARN", [e.errmsg])
             else:

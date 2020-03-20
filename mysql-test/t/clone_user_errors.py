@@ -21,7 +21,7 @@ clone_user_errors test.
 
 import os
 
-import clone_user
+from . import clone_user
 
 from mysql.utilities.exception import MUTLibError, UtilDBError
 

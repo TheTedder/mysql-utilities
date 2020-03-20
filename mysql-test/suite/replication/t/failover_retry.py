@@ -19,7 +19,7 @@
 failover master retry test.
 """
 
-import failover
+from . import failover
 from mysql.utilities.exception import MUTLibError
 
 FAILOVER_LOG = "{0}fail_log.txt"

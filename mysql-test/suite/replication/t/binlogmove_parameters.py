@@ -22,7 +22,7 @@ Test options for the mysqlbinlogmove utility.
 import os
 import time
 
-import binlogmove
+from . import binlogmove
 
 from mysql.utilities.exception import MUTLibError
 

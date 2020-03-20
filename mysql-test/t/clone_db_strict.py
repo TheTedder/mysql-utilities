@@ -19,7 +19,7 @@
 clone_db_strict test.
 """
 
-import clone_db
+from . import clone_db
 
 
 class test(clone_db.test):

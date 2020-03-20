@@ -21,7 +21,7 @@ show_rpl_parameters test.
 
 import os
 
-import show_rpl
+from . import show_rpl
 import mutlib
 
 from mysql.utilities.exception import UtilError, MUTLibError

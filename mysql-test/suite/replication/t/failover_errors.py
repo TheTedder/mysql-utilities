@@ -24,7 +24,7 @@ import socket
 import time
 
 import mutlib
-import rpl_admin_gtid
+from . import rpl_admin_gtid
 
 from mysql.utilities.exception import MUTLibError
 

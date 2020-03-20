@@ -25,7 +25,7 @@ import sys
 from mysql.utilities.common.format import print_list
 
 _CHARSET_INDEXES = ID, CHARACTER_SET_NAME, COLLATION_NAME, MAXLEN, IS_DEFAULT \
-    = range(0, 5)
+    = list(range(0, 5))
 
 _CHARSET_QUERY = """
 SELECT CL.ID,CL.CHARACTER_SET_NAME,CL.COLLATION_NAME,CS.MAXLEN, CL.IS_DEFAULT

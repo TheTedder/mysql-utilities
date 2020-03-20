@@ -21,7 +21,7 @@ rpl_admin test.
 
 import os
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 

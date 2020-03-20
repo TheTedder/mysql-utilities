@@ -47,7 +47,7 @@ class test(mutlib.System_test):
         self.drop_all()
         try:
             self.server1.read_and_exec_SQL(data_file, self.debug)
-        except MUTLibError, err:
+        except MUTLibError as err:
             raise MUTLibError(
                 "Failed to read commands from file {0}{1}: ".format(
                     data_file, err.errmsg))
@@ -77,7 +77,7 @@ class test(mutlib.System_test):
             try:
                 res = self.exec_util(cmd, self.res_fname)
                 self.results.append(res)
-            except MUTLibError, err:
+            except MUTLibError as err:
                 raise MUTLibError(err.errmsg)
 
         return True

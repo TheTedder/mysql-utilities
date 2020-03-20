@@ -21,7 +21,7 @@ rpl_sync_filters test.
 
 import os
 
-import rpl_sync
+from . import rpl_sync
 
 from mysql.utilities.exception import MUTLibError
 

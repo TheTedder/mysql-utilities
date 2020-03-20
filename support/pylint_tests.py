@@ -99,7 +99,7 @@ class ParseableTextReporter(TextReporter):
     def on_set_current_module(self, module, filepath):
         """Sets the template for the current module.
         """
-        self._template = unicode(self.line_format)
+        self._template = str(self.line_format)
 
 
 class CsvReporter(BaseReporter):
@@ -153,7 +153,7 @@ class Pep8Report(BaseReport):
                 color = 31  # Red
             else:  # It's a warning
                 color = 34  # Blue
-            msg = u"\033[{0}m{1}\033[0m".format(color, text)
+            msg = "\033[{0}m{1}\033[0m".format(color, text)
 
         # Use the prefix '8' to identify a PEP8 warning
         return ("8{0}".format(msg_id), msg,)
@@ -170,7 +170,7 @@ class Pep8Report(BaseReport):
                 color = 31  # Red
             else:  # It's a warning
                 color = 34  # Blue
-            msg = u"\033[1;{0}m{1}\033[0m".format(color, msg)
+            msg = "\033[1;{0}m{1}\033[0m".format(color, msg)
 
         path = os.path.relpath(self.filename, _BASE_PATH)
         module_path = os.path.splitext(path)[0]

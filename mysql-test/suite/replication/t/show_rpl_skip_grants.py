@@ -19,7 +19,7 @@
 show_rpl_skip_grants test.
 """
 
-import show_rpl
+from . import show_rpl
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

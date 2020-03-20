@@ -21,7 +21,7 @@ import_file_per_table test.
 
 import os
 
-import import_basic
+from . import import_basic
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

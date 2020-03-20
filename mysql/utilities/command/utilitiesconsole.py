@@ -356,7 +356,7 @@ class UtilitiesConsole(Console):
 
         # Build a new list that normalizes the options as a dictionary
         dictionary_list = []
-        for key in self.options.keys():
+        for key in list(self.options.keys()):
             # Skip variables list and messages
             if key not in ['variables', 'welcome', 'goodbye']:
                 value = self.options.get(key, '')

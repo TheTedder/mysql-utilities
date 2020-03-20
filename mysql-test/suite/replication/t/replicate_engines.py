@@ -21,7 +21,7 @@ replicate_engines test.
 
 import os
 
-import replicate
+from . import replicate
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

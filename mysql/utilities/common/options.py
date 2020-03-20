@@ -30,7 +30,7 @@ import os.path
 import re
 
 from datetime import datetime
-from ip_parser import find_password, parse_login_values_config_path
+from .ip_parser import find_password, parse_login_values_config_path
 from mysql.utilities import LICENSE_FRM, VERSION_FRM
 from mysql.utilities.exception import UtilError, FormatError
 from mysql.connector.conversion import MySQLConverter
@@ -1286,7 +1286,7 @@ def check_password_security(options, args, prefix=""):
     Returns - bool : False = no passwords, True = password found and msg shown
     """
     result = False
-    for value in options.__dict__.values():
+    for value in list(options.__dict__.values()):
         if isinstance(value, list):
             for item in value:
                 if find_password(item):

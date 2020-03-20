@@ -21,7 +21,7 @@ This module contains abstractions of a MySQL table and an index.
 
 import multiprocessing
 import sys
-from itertools import izip
+
 
 from mysql.utilities.exception import UtilError, UtilDBError
 from mysql.connector.conversion import MySQLConverter
@@ -133,7 +133,7 @@ class Index(object):
         num_cols_that = len(index.columns)
         same_size = num_cols_this == num_cols_that
         if self.type == "BTREE":
-            indexes = izip(self.columns, index.columns)
+            indexes = zip(self.columns, index.columns)
             for idx_pair in indexes:
                 if not self.__cmp_columns(*idx_pair):
                     return False
@@ -144,7 +144,7 @@ class Index(object):
             if self.type != "FULLTEXT":
                 # For RTREE or HASH type indexes, an index is redundant if
                 # it has the exact same columns on the exact same order.
-                indexes = izip(self.columns, index.columns)
+                indexes = zip(self.columns, index.columns)
                 return (same_size and
                         all((self.__cmp_columns(*idx_pair)
                              for idx_pair in indexes)))
@@ -879,7 +879,7 @@ class Table(object):
         for data_insert in insert_data:
             try:
                 dest.exec_query(data_insert, self.query_options)
-            except UtilError, e:
+            except UtilError as e:
                 raise UtilError("Problem inserting data. "
                                 "Error = %s" % e.errmsg)
 
@@ -887,7 +887,7 @@ class Table(object):
         for blob_insert in blob_data:
             try:
                 dest.exec_query(blob_insert, self.query_options)
-            except UtilError, e:
+            except UtilError as e:
                 raise UtilError("Problem updating blob field. "
                                 "Error = %s" % e.errmsg)
 

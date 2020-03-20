@@ -20,7 +20,7 @@ compare_db test.
 """
 
 import os
-import compare_db
+from . import compare_db
 
 from mysql.utilities.exception import MUTLibError
 

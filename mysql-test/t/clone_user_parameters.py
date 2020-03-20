@@ -19,7 +19,7 @@
 clone_user_parameters test.
 """
 
-import clone_user
+from . import clone_user
 
 from mysql.utilities.exception import MUTLibError
 

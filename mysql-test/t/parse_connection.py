@@ -162,11 +162,11 @@ _TEST_RESULTS_WITH_CREDENTIALS = [
     ('check valid with credentials #13', 'foo"bar:nmariz@localhost',
      'foo"bar:nmariz@localhost:3306', False),
 
-    ('check valid with credentials #14', u'ɱysql:unicode@localhost',
-     u'ɱysql:unicode@localhost:3306', False),
+    ('check valid with credentials #14', 'ɱysql:unicode@localhost',
+     'ɱysql:unicode@localhost:3306', False),
     ('check multiple connections #15',
-     u'root@vitro21:19003,root@vitro21:19004',
-     u'FAIL', True),
+     'root@vitro21:19003,root@vitro21:19004',
+     'FAIL', True),
 ]
 
 _TEST_RESULTS_WITH_CREDENTIALS_POSIX = [
@@ -182,14 +182,14 @@ def _spec(info):
 
     user = info['user']
     if ':' in user or '@' in user:
-        user = u"'{0}'".format(user.replace("'", "\'"))
+        user = "'{0}'".format(user.replace("'", "\'"))
     result.append(user)
 
     passwd = info.get('passwd')
     if passwd:
         result.append(':')
         if ':' in passwd or '@' in passwd:
-            passwd = u"'{0}'".format(passwd.replace("'", "\'"))
+            passwd = "'{0}'".format(passwd.replace("'", "\'"))
         result.append(passwd)
 
     result.append('@')
@@ -271,7 +271,7 @@ class test(mutlib.System_test):
             i += 1  # pylint: disable=W0631
             self.test_connection(i, test_case, with_credentials=True)
             if self.debug:
-                msg = u"Comparing result for test case {0}: {1} == {2}"
+                msg = "Comparing result for test case {0}: {1} == {2}"
                 print(msg.format(i + 1, test_case[2], self.results[i]))
                 if test_case[3]:
                     print("Test case is expected to fail.")
@@ -292,8 +292,8 @@ class test(mutlib.System_test):
         for test_case in _TEST_RESULTS_WITH_CREDENTIALS:
             i += 1  # pylint: disable=W0631
             if self.results[i] != test_case[2]:
-                msg = (u"Got wrong result for test case {0}. "
-                       u"Expected: {1}, got: {2}.")
+                msg = ("Got wrong result for test case {0}. "
+                       "Expected: {1}, got: {2}.")
                 return (False, msg.format(i + 1, test_case[2],
                                           self.results[i]))
         return True, None

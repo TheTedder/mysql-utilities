@@ -22,7 +22,7 @@ This module contains a test framework for testing MySQL Utilities.
 # TODO: Make it possible to stop and delete a specific server from the Server
 #       class.
 
-import commands
+import subprocess
 import difflib
 import itertools
 import os
@@ -707,7 +707,7 @@ class ServerList(object):
         Returns (int) process id or -1 if not found
         """
         if os.name == "posix":
-            output = commands.getoutput("ps -f|grep mysqld")
+            output = subprocess.getoutput("ps -f|grep mysqld")
             lines = output.splitlines()
             for line in lines:
                 proginfo = string.split(line)
@@ -734,7 +734,7 @@ class ServerList(object):
                     pass
 
 
-class System_test(object):
+class System_test(object, metaclass=ABCMeta):
     """The System_test class is used by the MySQL Utilities Test (MUT) facility
     to perform system tests against MySQL utilities This class is the base
     class from which all tests are derived.
@@ -758,7 +758,6 @@ class System_test(object):
     Note: Place test case comments in the class documentation section. This
           will be printed by the --verbose option.
     """
-    __metaclass__ = ABCMeta   # Register abstract base class
 
     def __init__(self, servers, res_dir, utildir, verbose=False, debug=False):
         """Constructor
@@ -1140,7 +1139,7 @@ class System_test(object):
                 # Line matched one of the given lines.
                 match_all = True
                 # Check if next lines also match.
-                for i in xrange(1, len(lines_tuple)):
+                for i in range(1, len(lines_tuple)):
                     # Note: same line can be repeatedly matched, i.e. it does
                     # not guarantee that distinct line are matched.
                     if not self.results[line_num + i].startswith(lines_tuple):
@@ -1477,7 +1476,7 @@ class System_test(object):
         rej_list = []
         try:
             while 1:
-                str_ = diff.next()
+                str_ = next(diff)
                 if str_[0] in ['-', '+', '?']:
                     rej_list.append(str_)
                 rej_file.write(str_)

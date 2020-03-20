@@ -172,7 +172,7 @@ class _CommandHistory(object):
             else:
                 self.commands[self.position - 1] = command
 
-    def next(self):
+    def __next__(self):
         """Get next command in list.
 
         Returns string next command
@@ -676,7 +676,7 @@ class Console(object):
         else:
             # Do command completion here
             if len(matches) == 1:
-                new_var = matches[0].items()[0][0] + ' '
+                new_var = list(matches[0].items())[0][0] + ' '
                 self.cmd_line.add(new_var[len(variable):])
                 self.tab_count = 0
 
@@ -829,7 +829,7 @@ class Console(object):
         elif cmd_key == 'ARROW_UP':
             self.cmd_line.replace_command(self.history.previous())
         elif cmd_key == 'ARROW_DN':
-            self.cmd_line.replace_command(self.history.next())
+            self.cmd_line.replace_command(next(self.history))
         elif cmd_key == 'ARROW_LT':
             self.cmd_line.left_arrow_keypress()
         elif cmd_key == 'ARROW_RT':

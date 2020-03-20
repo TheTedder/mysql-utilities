@@ -19,7 +19,7 @@
 clone_server_parameters_old test.
 """
 
-import clone_server_parameters
+from . import clone_server_parameters
 from mysql.utilities.exception import MUTLibError
 
 

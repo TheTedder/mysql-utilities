@@ -17,7 +17,7 @@
 
 import unittest
 
-import test_options
+from . import test_options
 
 def test_all():
     suite = unittest.TestSuite()

@@ -19,7 +19,7 @@
 Test options for the mysqlslavetrx utility.
 """
 
-import slave_trx_skip
+from . import slave_trx_skip
 
 from mysql.utilities.common.gtid import gtid_set_union
 from mysql.utilities.exception import MUTLibError, UtilError

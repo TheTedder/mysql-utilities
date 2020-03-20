@@ -19,7 +19,7 @@
 rpl_admin_gtid_demote_master_repo_file_req_pass test.
 """
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 

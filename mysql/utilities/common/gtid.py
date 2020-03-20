@@ -183,7 +183,7 @@ def gtid_set_itemize(gtid_set):
         for interval in uuid_set_elements[1:]:
             try:
                 start_val, end_val = interval.split('-')
-                trx_num_list.extend(range(int(start_val), int(end_val) + 1))
+                trx_num_list.extend(list(range(int(start_val), int(end_val) + 1)))
             except ValueError:
                 # Error raised for single values (not an interval).
                 trx_num_list.append(int(interval))

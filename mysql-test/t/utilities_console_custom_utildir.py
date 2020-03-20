@@ -22,7 +22,7 @@ utilities_console_custom_utildir test.
 import os
 import shutil
 
-import utilities_console_base
+from . import utilities_console_base
 
 from mysql.utilities.exception import MUTLibError
 from mysql.utilities.common import utilities as utils

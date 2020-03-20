@@ -19,7 +19,7 @@
 rpl_admin_gtid_loopbackIPv6 test.
 """
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 

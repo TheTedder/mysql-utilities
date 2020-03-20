@@ -22,7 +22,7 @@ frm_reader_default test.
 import os
 import shutil
 
-import frm_reader_base
+from . import frm_reader_base
 
 from mysql.utilities.exception import MUTLibError
 

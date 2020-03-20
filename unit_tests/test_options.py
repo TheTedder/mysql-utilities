@@ -28,14 +28,14 @@ def _spec(info):
 
     user = info['user']
     if ':' in user or '@' in user:
-        user = u"'{0}'".format(user)
+        user = "'{0}'".format(user)
     result.append(user)
 
     passwd = info.get('passwd')
     if passwd:
         result.append(':')
         if ':' in passwd or '@' in passwd:
-            passwd = u"'{0}'".format(passwd)
+            passwd = "'{0}'".format(passwd)
         result.append(passwd)
 
     result.append('@')
@@ -70,7 +70,7 @@ class TestParseConnection(unittest.TestCase):
         ("foo'bar:nmariz@localhost", "foo'bar:nmariz@localhost:3306"),
         ('nmariz:foo"bar@localhost', 'nmariz:foo"bar@localhost:3306'),
         ('foo"bar:nmariz@localhost', 'foo"bar:nmariz@localhost:3306'),
-        (u'ɱysql:unicode@localhost', u'ɱysql:unicode@localhost:3306'),
+        ('ɱysql:unicode@localhost', 'ɱysql:unicode@localhost:3306'),
         # IPv6 strings
         ("cbell@3ffe:1900:4545:3:200:f8ff:fe21:67cf",
          "cbell@[3ffe:1900:4545:3:200:f8ff:fe21:67cf]:3306"),
@@ -107,7 +107,7 @@ class TestParseConnection(unittest.TestCase):
         """
         for source, expected in self.valid_specifiers:
             result = _spec(parse_connection(source))
-            frm = u"{0}: was {1}, expected {2}"
+            frm = "{0}: was {1}, expected {2}"
             msg = frm.format(source, result, expected)
             self.assertEqual(expected, result, msg)
 

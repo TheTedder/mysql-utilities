@@ -19,7 +19,7 @@
 check_rpl_table test.
 """
 
-import replicate
+from . import replicate
 import mutlib
 
 from mysql.utilities.exception import MUTLibError

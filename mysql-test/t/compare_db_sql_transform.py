@@ -19,7 +19,7 @@
 compare_db_sql_transform test.
 """
 
-import test_sql_template
+from . import test_sql_template
 
 _TABLE1_DEF = """
     CREATE TABLE `comp_db`.`table1` (

@@ -19,7 +19,7 @@
 check_index_best_worst_small test.
 """
 
-import check_index_parameters
+from . import check_index_parameters
 
 from mysql.utilities.exception import MUTLibError
 

@@ -19,7 +19,7 @@
 clone_db_parameters_strict test.
 """
 
-import clone_db_parameters
+from . import clone_db_parameters
 
 
 class test(clone_db_parameters.test):

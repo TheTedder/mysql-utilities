@@ -21,7 +21,7 @@ import_rpl test.
 
 import os
 
-import copy_db_rpl
+from . import copy_db_rpl
 
 from mysql.utilities.exception import MUTLibError
 

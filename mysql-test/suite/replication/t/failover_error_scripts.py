@@ -21,7 +21,7 @@ failover_error_scripts test.
 
 import os
 
-import failover
+from . import failover
 
 from mysql.utilities.exception import MUTLibError
 

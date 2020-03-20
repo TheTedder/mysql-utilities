@@ -19,7 +19,7 @@
 rpl_admin_loopback test.
 """
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 

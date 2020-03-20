@@ -20,7 +20,7 @@ server_info_parameters test.
 """
 import os
 
-import server_info
+from . import server_info
 
 from mysql.utilities.exception import MUTLibError
 

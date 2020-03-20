@@ -19,7 +19,7 @@
 diff_sql_views test.
 """
 
-import test_sql_template
+from . import test_sql_template
 
 
 _TEST_VIEW_TABLE = "CREATE TABLE `diff_view`.`t1` (a int)"

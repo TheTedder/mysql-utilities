@@ -20,7 +20,7 @@ rpl_admin_gtid test.
 """
 
 import mutlib
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 

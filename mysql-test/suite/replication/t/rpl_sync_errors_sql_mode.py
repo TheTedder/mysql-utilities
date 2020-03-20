@@ -21,8 +21,8 @@ rpl_sync_errors_sql_mode test.
 
 import os
 
-import rpl_sync
-from rpl_sync_ansi_quotes import MYSQL_OPTS_DEFAULT
+from . import rpl_sync
+from .rpl_sync_ansi_quotes import MYSQL_OPTS_DEFAULT
 
 from mysql.utilities.exception import MUTLibError
 

@@ -19,7 +19,7 @@
 import_parameters test.
 """
 
-import import_parameters
+from . import import_parameters
 
 
 class test(import_parameters.test):
@@ -63,6 +63,6 @@ class test(import_parameters.test):
 
     def cleanup(self):
         # restore sql_mode
-        for server, sql_mode in (zip(self.server_lst, self.old_sql_mode_lst)):
+        for server, sql_mode in (list(zip(self.server_lst, self.old_sql_mode_lst))):
             server.exec_query("SET GLOBAL SQL_MODE='{0}'".format(sql_mode))
         return super(test, self).cleanup()

@@ -132,7 +132,7 @@ class test(mutlib.System_test):
             if self.debug:
                 print("Retrieved data:")
 
-            for data in sorted(ret_dt.iteritems()):
+            for data in sorted(ret_dt.items()):
                 # Only password is saved as passwd key
                 if 'passw' in data[0]:
                     if con_dic['passwd'] != data[1]:

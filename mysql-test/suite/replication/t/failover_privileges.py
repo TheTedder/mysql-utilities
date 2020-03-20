@@ -19,7 +19,7 @@
 failover_privileges test.
 """
 
-import failover
+from . import failover
 
 from mysql.utilities.common.user import change_user_privileges
 from mysql.utilities.exception import MUTLibError
@@ -45,7 +45,7 @@ class test(failover.test):
             return False
 
         # Range used for log filename (one for each test).
-        self.log_range = range(1, 17)
+        self.log_range = list(range(1, 17))
 
         # Create user for master with minimum required privileges.
         master_grants = ['DROP', 'CREATE', 'INSERT', 'SELECT',

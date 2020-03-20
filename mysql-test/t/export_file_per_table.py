@@ -21,7 +21,7 @@ export_file_per_table test.
 
 import os
 
-import export_parameters_def
+from . import export_parameters_def
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

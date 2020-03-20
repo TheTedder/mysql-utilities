@@ -21,7 +21,7 @@ frm_reader_errors test.
 
 import os
 
-import frm_reader_base
+from . import frm_reader_base
 
 from mysql.utilities.exception import MUTLibError
 

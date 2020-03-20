@@ -343,7 +343,7 @@ def _check_data_consistency(server1, server2, obj1, obj2, reporter, options):
                                             'server2', 'server1', new_opts)
             if diff_list:
                 errors = diff_list
-        except UtilError, e:
+        except UtilError as e:
             if e.errmsg.endswith("not have an usable Index or primary key."):
                 reporter.report_state('SKIP')
                 errors.append("# {0}".format(e.errmsg))

@@ -16,9 +16,9 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 #
 """Setup script for MySQL Utilities"""
-from __future__ import absolute_import
 
-import ConfigParser
+
+import configparser
 import fnmatch
 import os
 import platform
@@ -188,7 +188,7 @@ class install_man(distutils.core.Command):
             outputs = self.get_outputs()
             if self.root:               # strip any package prefix
                 root_len = len(self.root)
-                for counter in xrange(len(outputs)):
+                for counter in range(len(outputs)):
                     outputs[counter] = outputs[counter][root_len:]
 
             log.info("writing list of installed files to '{0}'".format(
@@ -390,7 +390,7 @@ class install_data(_install_data):
                 # It was a config file template, add install
                 # directories to the config file.
                 if fnmatch.fnmatch(filename, 'data/*.cfg.in'):
-                    config = ConfigParser.RawConfigParser({
+                    config = configparser.RawConfigParser({
                         'prefix': '',  # install_dir,
                         'logdir': install_logdir,
                         'sysconfdir': install_sysconfdir,

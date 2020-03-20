@@ -24,7 +24,7 @@ import subprocess
 import tempfile
 import time
 
-import rpl_admin_gtid
+from . import rpl_admin_gtid
 
 from mysql.utilities.common.server import get_local_servers
 from mysql.utilities.common.tools import delete_directory
@@ -48,7 +48,7 @@ class test(rpl_admin_gtid.test):
     It uses the rpl_admin_gtid test for setup and teardown methods.
     """
 
-    log_range = range(1, 5)
+    log_range = list(range(1, 5))
 
     # TODO: Perform analysis as to whether any of these methods need to be
     #       generalized and placed in the mutlib for all tests to access.

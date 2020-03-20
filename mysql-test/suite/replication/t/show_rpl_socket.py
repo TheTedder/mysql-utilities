@@ -21,7 +21,7 @@ show_rpl_socket test.
 
 import os
 
-import show_rpl
+from . import show_rpl
 
 from mysql.utilities.exception import UtilError, MUTLibError
 

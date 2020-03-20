@@ -21,7 +21,7 @@ failover_daemon_errors test.
 
 import os
 
-import rpl_admin_gtid
+from . import rpl_admin_gtid
 
 from mysql.utilities.exception import MUTLibError
 

@@ -19,7 +19,7 @@
 rpl_admin_errant_transactions test.
 """
 
-import rpl_admin
+from . import rpl_admin
 
 from mysql.utilities.exception import MUTLibError
 

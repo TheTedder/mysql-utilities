@@ -21,7 +21,7 @@ diff test with sql_mode=ANSI_QUOTES and different sql_mode.
 
 import os
 
-import diff
+from . import diff
 
 from mysql.utilities.exception import MUTLibError, UtilError
 

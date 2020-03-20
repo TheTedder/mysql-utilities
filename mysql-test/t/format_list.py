@@ -49,8 +49,8 @@ class test(mutlib.System_test):
         cols_2 = ['a', 'b']
         rows_3 = [('one', None, 31), ('two', None, 32), ('three', None, 33)]
         cols_3 = ['a', 'b', 'c']
-        rows_4 = [(u'á', u'é', u'í'), (u'á', u'é', u'í'), (u'á', u'é', u'í')]
-        cols_4 = [u'á', u'é', u'í']
+        rows_4 = [('á', 'é', 'í'), ('á', 'é', 'í'), ('á', 'é', 'í')]
+        cols_4 = ['á', 'é', 'í']
 
         format_tabular_list(test_file, cols_1, rows_1)
         format_tabular_list(test_file, cols_2, rows_2)

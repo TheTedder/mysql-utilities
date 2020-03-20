@@ -19,7 +19,7 @@
 rpl_admin_gtid_sql_mode_ansi_quotes test.
 """
 
-import rpl_admin_gtid_loopback
+from . import rpl_admin_gtid_loopback
 
 from mysql.utilities.exception import MUTLibError
 

@@ -367,7 +367,7 @@ def clone_server(conn_val, options):
         cmd.update({'user': '--user={0}'.format(user)})
     if mysqld_options:
         if isinstance(mysqld_options, (list, tuple)):
-            cmd.update(dict(zip(mysqld_options, mysqld_options)))
+            cmd.update(dict(list(zip(mysqld_options, mysqld_options))))
         else:
             new_opts = mysqld_options.strip(" ")
             # Drop the --mysqld=
@@ -375,16 +375,16 @@ def clone_server(conn_val, options):
                 new_opts = new_opts[9:]
             if new_opts.startswith('"') and new_opts.endswith('"'):
                 list_ = shlex.split(new_opts.strip('"'))
-                cmd.update(dict(zip(list_, list_)))
+                cmd.update(dict(list(zip(list_, list_))))
             elif new_opts.startswith("'") and new_opts.endswith("'"):
                 list_ = shlex.split(new_opts.strip("'"))
-                cmd.update(dict(zip(list_, list_)))
+                cmd.update(dict(list(zip(list_, list_))))
             # Special case where there is only 1 option
             elif len(new_opts.split("--")) == 1:
                 cmd.update({mysqld_options: mysqld_options})
             else:
                 list_ = shlex.split(new_opts)
-                cmd.update(dict(zip(list_, list_)))
+                cmd.update(dict(list(zip(list_, list_))))
 
     # set of options that must be surrounded with quotes
     options_to_quote = set(["datadir", "tmpdir", "basedir", "socket",
@@ -412,7 +412,7 @@ def clone_server(conn_val, options):
                                                           mysqld_path)]
 
         # build start command
-        for key, val in cmd.iteritems():
+        for key, val in cmd.items():
             if key in options_to_quote:
                 val = "{0}{1}{0}".format(quote_char, val)
             start_cmd_lst.append(val)

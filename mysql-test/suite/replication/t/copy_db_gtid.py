@@ -22,7 +22,7 @@ copy_db_gtid test.
 import os
 
 import mutlib
-import export_gtid
+from . import export_gtid
 
 from mysql.utilities.exception import UtilError, MUTLibError
 

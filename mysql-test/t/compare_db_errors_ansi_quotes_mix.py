@@ -19,7 +19,7 @@
 compare_db_errors test.
 """
 
-import compare_db_errors
+from . import compare_db_errors
 
 from mysql.utilities.exception import MUTLibError
 

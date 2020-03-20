@@ -19,7 +19,7 @@
 t4 test.
 """
 
-import t2
+from . import t2
 
 
 class test(t2.test):

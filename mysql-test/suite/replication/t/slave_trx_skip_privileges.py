@@ -19,7 +19,7 @@
 Test privileges to run the mysqlslavetrx utility.
 """
 
-import slave_trx_skip
+from . import slave_trx_skip
 
 from mysql.utilities.common.gtid import gtid_set_union
 from mysql.utilities.common.user import change_user_privileges

@@ -21,7 +21,7 @@ rpl_sync test.
 
 import os
 
-import rpl_sync
+from . import rpl_sync
 
 
 MYSQL_OPTS_DEFAULT = ('"--log-bin=mysql-bin --skip-slave-start '

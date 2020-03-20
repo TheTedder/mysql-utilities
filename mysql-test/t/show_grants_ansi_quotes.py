@@ -20,7 +20,7 @@ grants_show test.
 """
 import os
 
-import show_grants
+from . import show_grants
 
 from mysql.utilities.exception import MUTLibError
 

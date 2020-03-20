@@ -21,7 +21,7 @@ This module contains abstractions of MySQL replication functionality.
 
 import os
 import time
-import StringIO
+import io
 import socket
 
 from mysql.utilities.exception import UtilError, UtilRplWarn, UtilRplError
@@ -88,7 +88,7 @@ def _get_list(rows, cols):
 
     Returns list of strings
     """
-    ostream = StringIO.StringIO()
+    ostream = io.StringIO()
     format_tabular_list(ostream, cols, rows)
     return ostream.getvalue().splitlines()
 
@@ -1186,7 +1186,7 @@ class MasterInfo(object):
         try:
             res = self.slave.exec_query("SELECT * FROM "
                                         "mysql.slave_master_info")
-        except UtilError, e:
+        except UtilError as e:
             raise UtilRplError("Unable to read the slave_master_info table. "
                                "Error: %s" % e.errmsg)
         if res is None or res == []:
@@ -1859,7 +1859,7 @@ class Slave(Server):
                 if res is None or res[0] is None or res[0][0] is None or \
                    int(res[0][0]) < 0:
                     slave_wait_ok = False
-            except UtilRplError, e:
+            except UtilRplError as e:
                 raise UtilRplError("Error executing %s: %s" %
                                    ((_GTID_WAIT % (gtid.strip(','), timeout)),
                                     e.errmsg))

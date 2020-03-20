@@ -21,7 +21,7 @@ check_index_errors test.
 
 import os
 
-import check_index
+from . import check_index
 
 from mysql.utilities.exception import MUTLibError
 

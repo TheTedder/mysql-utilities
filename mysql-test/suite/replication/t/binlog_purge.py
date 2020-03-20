@@ -20,7 +20,7 @@ binlog_purge test.
 """
 
 import mutlib
-from binlog_rotate import binlog_file_exists
+from .binlog_rotate import binlog_file_exists
 
 from mysql.utilities.exception import MUTLibError
 

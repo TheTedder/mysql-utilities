@@ -135,7 +135,7 @@ def get_connection_dictionary(conn_info, ssl_dict=None):
     elif isinstance(conn_info, Server):
         # get server's dictionary
         conn_val = conn_info.get_connection_values()
-    elif isinstance(conn_info, basestring):
+    elif isinstance(conn_info, str):
         # parse the string
         conn_val = parse_connection(conn_info, options=ssl_dict)
     else:
@@ -176,10 +176,10 @@ def set_ssl_opts_in_connection_info(ssl_opts, connection_info):
     # but C/py will not allow the None value for the ca option, so we use an
     # empty string i.e '' to avoid an error from C/py about ca option being
     # the None value.
-    if ('ssl_cert' in connection_info.keys() or
-            'ssl_key' in connection_info.keys() or
+    if ('ssl_cert' in list(connection_info.keys()) or
+            'ssl_key' in list(connection_info.keys()) or
             ssl_opts.get('ssl')) and \
-            'ssl_ca' not in connection_info.keys():
+            'ssl_ca' not in list(connection_info.keys()):
         connection_info['ssl_ca'] = ''
 
     # The ca certificate is verified only if the ssl option is also specified.
@@ -1160,8 +1160,8 @@ class Server(object):
             # connection, but C/py will not allow the None value for the ca
             # option, so we use an empty string i.e '' to avoid an error from
             # C/py about ca option being the None value.
-            if ('ssl_cert' in parameters.keys() or
-                    'ssl_key' in parameters.keys() or
+            if ('ssl_cert' in list(parameters.keys()) or
+                    'ssl_key' in list(parameters.keys()) or
                     self.ssl) and \
                     'ssl_ca' not in parameters:
                 parameters['ssl_ca'] = ''
