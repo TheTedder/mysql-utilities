@@ -69,7 +69,7 @@ class test(mutlib.System_test):
             comment = "Test case {0} - clone with locking={1}".format(test_num,
                                                                       locktype)
             if self.debug:
-                print comment
+                print(comment)
             self.drop_db(self.server1, "util_db_clone")
             cmd = ("mysqldbcopy.py --skip-gtid {0} {1} util_test:util_db_clone"
                    "  --drop-first --locking={2}".format(from_conn, to_conn,

@@ -239,7 +239,7 @@ class Topology(Replication):
         """
         # First, print the message.
         if print_msg and not self.quiet:
-            print message
+            print(message)
         # Now log message if logging turned on
         if self.logging:
             logging.log(int(level), message.strip("#").strip(' '))
@@ -1214,7 +1214,7 @@ class Topology(Replication):
                 if self.verbose and error[2] is not None:
                     self._report(error[2], logging.WARN)
                 else:
-                    print
+                    print()
             return False
 
         return True
