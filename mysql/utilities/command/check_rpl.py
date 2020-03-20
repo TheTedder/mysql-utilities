@@ -107,11 +107,7 @@ def check_replication(master_vals, slave_vals, options):
             print("\n#\n# Slave status: \n#")
             rpl.slave.show_status()
         except UtilRplError as e:
-<<<<<<< Updated upstream
-            print "ERROR:", e.errmsg
-=======
             print("ERROR:", e.errmsg)
->>>>>>> Stashed changes
 
     if not quiet:
         print("# ...done.")
@@ -174,11 +170,7 @@ class _BaseTestReplication(object):
             try:
                 self.report_epilog()
             except UtilRplError as e:
-<<<<<<< Updated upstream
-                print "ERROR:", e.errmsg
-=======
                 print("ERROR:", e.errmsg)
->>>>>>> Stashed changes
                 res = True
 
         return res

@@ -139,8 +139,8 @@ def _exec_util(cmd, file_out, utildir, debug=False, abspath=False,
         run_cmd = cmd
     with open(file_out, 'w+') as f_out:
         if debug:
-            print
             print("exec_util command={0}".format(run_cmd))
+            print()
             proc = subprocess.Popen(run_cmd, shell=shell, stdin=stdin)
         else:
             proc = subprocess.Popen(run_cmd, shell=shell, stdin=stdin,
@@ -155,7 +155,7 @@ def _exec_util(cmd, file_out, utildir, debug=False, abspath=False,
 
         ret_val = proc.wait()
         if debug:
-            print "ret_val=", ret_val
+            print("ret_val=", ret_val)
     return ret_val
 
 
@@ -567,9 +567,9 @@ class ServerList(object):
                     else:
                         print("ERROR")
                 except MUTLibError as err:
-                    print "ERROR"
                     print("    Unable to shutdown server "
                           "{0}.".format(server[0].role))
+                    print("ERROR")
 
     def add_new_server(self, new_server, spawned=False, id_=-1):
         """Add an existing server to the server lists.
@@ -1066,7 +1066,7 @@ class System_test(object, metaclass=ABCMeta):
         Returns True if result matches expected result
         """
         if self.debug or debug:
-            print "\n{0}".format(comments)
+            print("\n{0}".format(comments))
         res = self.exec_util(command, self.res_fname)
         if comments:
             self.results.append("{0}\n".format(comments))
@@ -1086,7 +1086,7 @@ class System_test(object, metaclass=ABCMeta):
         Returns int - actual result
         """
         if self.debug or debug:
-            print "\n{0}".format(comments)
+            print("\n{0}".format(comments))
         res = self.exec_util(command, self.res_fname)
         if comments:
             self.results.append("{0}\n".format(comments))
@@ -1543,7 +1543,7 @@ class System_test(object, metaclass=ABCMeta):
         if index >= 0:
             server = self.servers.get_server(index)
             if self.debug:
-                print "# Killing server {0}.".format(server.role)
+                print("# Killing server {0}.".format(server.role))
             try:
                 self.servers.stop_server(server)
             except:
@@ -1561,7 +1561,7 @@ class System_test(object, metaclass=ABCMeta):
             return True
         else:
             if self.debug:
-                print "# Kill failed! Server '{0}' was not found.".format(name)
+                print("# Kill failed! Server '{0}' was not found.".format(name))
             return False
 
     def kill_server_list(self, servers):
