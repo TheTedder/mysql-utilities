@@ -191,7 +191,7 @@ class Utilities(object):
             if isinstance(res, tuple):
                 is_compat, error_msg = res
                 if not is_compat:
-                    self.available_utilities.remove(util_name)
+                    del self.available_utilities[util_name]
                     print(WARNING_FAIL_TO_READ_OPTIONS.format(util_name))
                     print("ERROR: {0}\n".format(error_msg))
                     continue
