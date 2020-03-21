@@ -373,7 +373,7 @@ class TestLogParserBase(BaseParserTestCase):
     """Test LogParserBase-class
     """
     def setUp(self):
-        self.fakelog = tempfile.SpooledTemporaryFile(max_size=3*1024)
+        self.fakelog = tempfile.SpooledTemporaryFile(max_size=3*1024, mode='w+t')
         self.log = LogParserBase(stream=self.fakelog)
     
     def tearDown(self):
@@ -488,7 +488,7 @@ class TestLogParserBase(BaseParserTestCase):
 
 class TestGeneralQueryLog(BaseParserTestCase):
     def setUp(self):
-        self.fakelog = tempfile.SpooledTemporaryFile(max_size=3*1024)
+        self.fakelog = tempfile.SpooledTemporaryFile(max_size=3*1024, mode='w+t')
         self.log = GeneralQueryLog(stream=self.fakelog)
     
     def tearDown(self):
@@ -639,7 +639,7 @@ class TestSlowQueryLog(BaseParserTestCase):
     """Test SlowQueryLog class"""
 
     def setUp(self):
-        self.fakelog = tempfile.SpooledTemporaryFile(max_size=3*1024)
+        self.fakelog = tempfile.SpooledTemporaryFile(max_size=3*1024, mode='w+t')
         self.log = SlowQueryLog(stream=self.fakelog)
     
     def tearDown(self):
