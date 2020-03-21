@@ -169,10 +169,10 @@ class Utilities(object):
         self.posible_utilities = {}
         self.posible_utilities.update(AVAILABLE_UTILITIES)
         if self.extra_utilities and self.hide_utils:
-            self.posible_utilities = self.extra_utilities
+            self.posible_utilities = self.extra_utilities.copy()
         else:
             self.posible_utilities.update(self.extra_utilities)
-        self.available_utilities = self.posible_utilities
+        self.available_utilities = self.posible_utilities.copy()
         for util_name, ver_compatibility in self.posible_utilities.items():
             name_utility = "{0} utility".format(util_name)
             if ver_compatibility:
